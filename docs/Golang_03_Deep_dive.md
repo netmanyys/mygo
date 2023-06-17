@@ -69,7 +69,11 @@ type and receivers, type is similiar with `class`, receivers is like `methods`.
 'cards' folder
 [main.go] [deck.go] [deck_test.go]
 
-receiver function, d is similar to `self` in py
+receiver argument, d is similar to `self` in py
+`d` is the actual copy of the deck, we're woring with is available in the function as a variable called `d`
+
+`deck` Every variable of type 'deck' can call this function on itself
+
 
 slice[start:end] \\ up to end but not include end
 slice[:3] \\ 0,1,2
