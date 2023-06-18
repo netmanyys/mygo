@@ -82,7 +82,32 @@ slice[3:] \\ 3
 func (d deck) print() {}
 Any variable of type "deck" now gets access to the "print" method
 
+## Golang standard packages
+https://golang.org/pkg/
 
+## func WriteFile
+https://pkg.go.dev/os#WriteFile
+func WriteFile(name string, data []byte, perm FileMode) error
+
+```
+package main
+
+import (
+	"log"
+	"os"
+)
+
+func main() {
+	err := os.WriteFile("testdata/hello", []byte("Hello, Gophers!"), 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
+https://pkg.go.dev/strings#Join
+https://pkg.go.dev/os#ReadFile
+https://pkg.go.dev/strings#Split
 
 #   
 
