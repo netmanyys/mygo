@@ -109,6 +109,19 @@ https://pkg.go.dev/strings#Join
 https://pkg.go.dev/os#ReadFile
 https://pkg.go.dev/strings#Split
 
+## Go test
+Go testing is not RSpec, mocha, jasmine, selenium, etc!
+
+To make a test, create a new file ending in _test.go
+  deck_test.go
+To run all tests in a package, run the command...
+  go test
+
+
+Deciding what to test
+let's check the length of the deck that return
+2nd check the first card is equal to ace of spades
+3rd check the last card is equal to Four of Spades
 #   
 
                         Value Types     |  Reference Types
