@@ -23,8 +23,7 @@ func main() {
 		},
 	}
 
-	jimPointer := &jim
-	jimPointer.updateName("jimmy")
+	jim.updateName("Jimmy")
 	jim.print()
 }
 
@@ -37,4 +36,4 @@ func (p person) print() {
 }
 
 // ❯ go run main.go
-// {firstName:jimmy lastName:Party contactInfo:{email:jim@gmail.com zipCode:94000}}
+// {firstName:Jimmy lastName:Party contactInfo:{email:jim@gmail.com zipCode:94000}}
