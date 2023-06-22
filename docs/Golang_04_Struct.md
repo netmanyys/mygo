@@ -119,9 +119,3 @@ func printPointer(namePointer *string) {
 \\0xc00010c230
 \\0xc00010c230
 ```
-  # map 
-  a hash map 
-   Map 
-   key -> value
-   key -> value
-   key -> value
