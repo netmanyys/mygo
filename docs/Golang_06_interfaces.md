@@ -19,3 +19,10 @@ func (spanishBot) getGreeting() string
 
 func printGreeting(sb  spanishBot)
     fmt.Println(sb.getGreeting())
+
+
+
+Interfaces are not generic types 
+Interfaces are 'implicit'
+Interfaces are a contract to help us manage types
+Interfaces are tough, Step #1 is understanding how to read them

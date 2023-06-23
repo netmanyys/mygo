@@ -28,6 +28,7 @@ func printGreeting(b bot) {
 //	func printGreeting(sb spanishBot) {
 //		fmt.Println(sb.getGreeting())
 //	}
+
 func (englishBot) getGreeting() string {
 	// VERY custom logic for generating an english greeting
 	return "Hi There!"
@@ -40,3 +41,7 @@ func (spanishBot) getGreeting() string {
 // ❯ go run main.go
 // Hi There!
 // Hola
+
+// struct  englishbot spansihbot          interface  bot
+// func    getGreeting getGreeting           printGreeting
+//                                              main
