@@ -42,18 +42,13 @@ type Response struct {
 	ProtoMajor int    // e.g. 1
 	ProtoMinor int    // e.g. 0
 ...
-	Body io.ReadCloser
-    ...
+	Body io.ReadCloser                          ==========>   type ReadCloser interface {
+    ...                                                           Reader                   ===============>  type Reader interface {
+                                                                  Closer                              	         Read(p []byte) (n int, err error)
+                                                                  }                                              }
 ```
 
 https://pkg.go.dev/io#ReadCloser
-
-```
-type ReadCloser interface {
-	Reader
-	Closer
-}
-```
 
 
 ```
