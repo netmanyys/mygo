@@ -73,3 +73,20 @@ type error interface {
 	Error() string
 }
 ```
+
+
+
+https://pkg.go.dev/io#Writer
+
+## type Writer 
+```
+type Writer interface {
+	Write(p []byte) (n int, err error)
+}
+```
+### func Copy 
+https://pkg.go.dev/io#Copy
+```
+func Copy(dst Writer, src Reader) (written int64, err error)
+
+```
