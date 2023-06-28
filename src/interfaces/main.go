@@ -6,6 +6,10 @@ type bot interface {
 	getGreeting() string
 }
 
+// if you are a type in thie program with a function named "getGreeting"
+// and you return a string then you are now an honorary member of type 'bot'
+// and now you can call function printGreeting
+
 type englishBot struct{}
 type spanishBot struct{}
 

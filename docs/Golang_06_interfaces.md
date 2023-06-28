@@ -26,3 +26,55 @@ Interfaces are not generic types
 Interfaces are 'implicit'
 Interfaces are a contract to help us manage types
 Interfaces are tough, Step #1 is understanding how to read them
+
+https://pkg.go.dev/net/http@go1.20.5#Get
+https://pkg.go.dev/net/http@go1.20.5#Response
+
+```
+func Get(url string) (resp *Response, err error)
+```
+
+```
+type Response struct {
+	Status     string // e.g. "200 OK"
+	StatusCode int    // e.g. 200
+	Proto      string // e.g. "HTTP/1.0"
+	ProtoMajor int    // e.g. 1
+	ProtoMinor int    // e.g. 0
+...
+	Body io.ReadCloser
+    ...
+```
+
+https://pkg.go.dev/io#ReadCloser
+
+```
+type ReadCloser interface {
+	Reader
+	Closer
+}
+```
+
+
+```
+type Reader interface {
+	Read(p []byte) (n int, err error)
+}
+
+the thing who want to read the response body, firstly create a byte slice and parse it to reader interface
+then let the interface implementor fulfill or fill the data into the byte slice, it doesn't return the byte slice but it let the thing who want to read it can read it.
+```
+
+
+```
+type Closer interface {
+	Close() error
+}
+```
+
+
+```
+type error interface {
+	Error() string
+}
+```

@@ -123,17 +123,3 @@ let's check the length of the deck that return
 2nd check the first card is equal to ace of spades
 3rd check the last card is equal to Four of Spades
 #   
-
-                        Value Types     |  Reference Types
-  use                     /    int      |  slices     \
-  pointers                |    float    |  maps        | Don't worry about pointers
-  to change  -------------|    string   |  channels    | with these
-  these things            |    bool     |  pointers    |
-  in a function            \   structs  |  functions  /
-
-  # map 
-  a hash map 
-   Map 
-   key -> value
-   key -> value
-   key -> value
