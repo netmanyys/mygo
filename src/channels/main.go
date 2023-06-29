@@ -19,18 +19,21 @@ func main() {
 		go checkLink(link, ch)
 	}
 
-	for range links {
-		fmt.Println(<-ch)
+	for {
+		go checkLink(<-ch, ch)
 	}
 }
 
 func checkLink(link string, ch chan string) {
 	_, err := http.Get(link)
 	if err != nil {
-		ch <- fmt.Sprintf("Error: %s is down", link)
-	} else {
-		ch <- fmt.Sprintf("Success: %s is up", link)
+		fmt.Println(link, "might be down!")
+		ch <- link
+		return
 	}
+
+	fmt.Println(link, "is up!")
+	ch <- link
 
 }
 
