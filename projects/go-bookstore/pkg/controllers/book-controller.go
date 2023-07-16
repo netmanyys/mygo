@@ -45,7 +45,7 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteBook(w http.ResponseWriter, r *http.Request) {
-	vars := mux.vars(r)
+	vars := mux.Vars(r)
 	bookId := vars["bookId"]
 	ID, err := strconv.ParseInt(BookId, 0, 0)
 	if err != nil {
@@ -67,7 +67,7 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("error while parsing")
 	}
-	booksDetails, db := models.GetBookById(ID)
+	bookDetails, db := models.GetBookById(ID)
 	if updateBook.Name != "" {
 		bookDetails.Name = updateBook.Name
 	}
