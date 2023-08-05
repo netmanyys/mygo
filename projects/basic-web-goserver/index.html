@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title> Math Quiz </title>
+
+
+    <style>
+        td {
+            padding: 2px;
+            text-align: left; /* Align all table cell contents to the left */
+        }
+
+        .question {
+            font-size: 64px;
+        }
+
+        .result-container {
+            font-size: 48px;
+            margin-top: 3px;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        .answer {
+            font-size: 48px; /* Set the font size for the answer input to 48px */
+            }
+
+        .submit-button {
+        display: none; /* Initially hide the submit button */
+            font-size: 32px;
+            /* Add more styles here if needed */
+        }
+
+        .retry-button {
+            font-size: 48px;
+            /* Add more styles here if needed */
+        }
+
+        #question-container {
+            margin-left: 7%;
+        }
+        
+        #myheader {
+            font-size: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="myheader">Math Quiz</div>
+    <div id="question-container">
+        <table>
+            <tbody id="quiz-table-body">
+                <!-- Five rows for five questions will be added dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+        const totalQuestions = 8;
+
+        function generateRandomNumber() {
+            return Math.floor(Math.random() * 8) + 2;
+        }
+
+
+
+        function generateQuestion() {
+            const num1 = generateRandomNumber();
+            const num2 = generateRandomNumber();
+            const questionText = `${num1} * ${num2} =`;
+
+            const tableBody = document.getElementById("quiz-table-body");
+
+            const tr = document.createElement("tr");
+
+            const questionCell = document.createElement("td");
+            questionCell.className = "question";
+            questionCell.textContent = questionText;
+            tr.appendChild(questionCell);
+
+            const answerCell = document.createElement("td");
+            const answerSelect = document.createElement("select"); // Use select element for drop-down list
+            answerSelect.className = "answer";
+            answerCell.appendChild(answerSelect);
+            tr.appendChild(answerCell);
+
+            // Add options from 1 to 99 to the select element
+            for (let i = 1; i <= 99; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                answerSelect.appendChild(option);
+            }
+
+            const buttonCell = document.createElement("td");
+            const submitButton = document.createElement("button");
+            submitButton.textContent = "Submit";
+            submitButton.className = "submit-button"; // Apply the CSS class to the button
+            submitButton.onclick = checkAnswer;
+            buttonCell.appendChild(submitButton);
+            tr.appendChild(buttonCell);
+
+            // Add an event listener to the answer select to show the submit button when the user selects an option
+            answerSelect.addEventListener("change", function () {
+                submitButton.style.display = "block";
+            });
+
+            const resultCell = document.createElement("td");
+            const resultContainer = document.createElement("div");
+            resultContainer.className = "result-container";
+            resultCell.appendChild(resultContainer);
+            tr.appendChild(resultCell);
+
+            tableBody.appendChild(tr);
+    }
+
+        // Call generateQuestion() initially to display the first question when the page loads
+        for (let i = 0; i < totalQuestions; i++) {
+            generateQuestion();
+        }
+
+        function checkAnswer() {
+            const userAnswer = document.querySelectorAll(".answer")[currentQuestion].value;
+            const questionText = document.querySelectorAll(".question")[currentQuestion].innerText;
+            const [num1, num2] = questionText.split(" * ");
+            const correctAnswer = parseInt(num1) * parseInt(num2);
+            const resultContainer = document.querySelectorAll(".result-container")[currentQuestion];
+
+            if (parseInt(userAnswer) === correctAnswer) {
+                resultContainer.className = "result-container correct";
+                resultContainer.innerText = "✅";
+                correctAnswers++;
+            } else {
+                resultContainer.className = "result-container incorrect";
+                resultContainer.innerText = "❌";
+            }
+
+            // Move to the next question or show statistics
+            currentQuestion++;
+            if (currentQuestion === totalQuestions) {
+                showStatistics();
+            }
+        }
+
+        // Function to refresh the page
+        function refreshPage() {
+            location.reload();
+        }
+
+       function showStatistics() {
+           const accuracy = (correctAnswers / totalQuestions) * 100;
+           const resultContainer = document.createElement("div");
+           resultContainer.style.fontSize = "48px";
+
+           if (accuracy === 100) {
+               resultContainer.innerHTML = `<i class="fa fa-thumbs-o-up" aria-hidden="true"></i></i> Yeah!! You answered ${correctAnswers} out of ${totalQuestions} questions correctly. Accuracy: ${accuracy}%`;
+           } else {
+               resultContainer.innerHTML = `<i class="fa fa-bomb" aria-hidden="true"></i> Hmmm.. You answered ${correctAnswers} out of ${totalQuestions} questions correctly. Accuracy: ${accuracy}%`;
+           }
+
+           const questionContainer = document.getElementById("question-container");
+           questionContainer.appendChild(resultContainer);
+
+	   // Create the "Try One More Time" button
+           const tryAgainButton = document.createElement("button");
+           tryAgainButton.textContent = "Try One More Time";
+	   tryAgainButton.className = "retry-button";
+           tryAgainButton.onclick = refreshPage; // Assign the refreshPage() function to the button's onclick event
+           questionContainer.appendChild(tryAgainButton);
+        }
+
+    </script>
+</body>
+</html>

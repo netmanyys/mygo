@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Questionnaire</title>
+    <!-- Add your CSS stylesheets here if you have any -->
+</head>
+<body>
+    <h1>Questionnaire</h1>
+    <form>
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Preferences</legend>
+            <p>What is your favorite color?</p>
+            <input type="radio" id="color-red" name="color" value="Red">
+            <label for="color-red">Red</label><br>
+            <input type="radio" id="color-blue" name="color" value="Blue">
+            <label for="color-blue">Blue</label><br>
+            <input type="radio" id="color-green" name="color" value="Green">
+            <label for="color-green">Green</label><br>
+
+            <p>Which of these activities do you enjoy?</p>
+            <input type="checkbox" id="activity-sports" name="activity" value="Sports">
+            <label for="activity-sports">Sports</label><br>
+            <input type="checkbox" id="activity-reading" name="activity" value="Reading">
+            <label for="activity-reading">Reading</label><br>
+            <input type="checkbox" id="activity-traveling" name="activity" value="Traveling">
+            <label for="activity-traveling">Traveling</label><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Comments</legend>
+            <label for="comments">Any additional comments:</label><br>
+            <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br>
+        </fieldset>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Output</title>
+    <script>
+        var socket = new WebSocket("ws://" + window.location.host + "/ws");
+
+        socket.onmessage = function(event) {
+            var outputElement = document.getElementById("output");
+            var shouldScroll = outputElement.scrollTop + outputElement.clientHeight === outputElement.scrollHeight;
+
+            var messageElement = document.createElement("p");
+            messageElement.textContent = event.data;
+            outputElement.appendChild(messageElement);
+
+            // Scroll the last message into view to keep it at the bottom
+            if (shouldScroll) {
+                messageElement.scrollIntoView({ behavior: "smooth", block: "end" });
+            }
+        };
+
+        function scrollToTop() {
+            var outputElement = document.getElementById("output");
+            outputElement.scrollTop = 0;
+        }
+
+        function toggleAutoScroll() {
+            var outputElement = document.getElementById("output");
+            var autoScroll = outputElement.classList.toggle("autoscroll");
+            if (autoScroll) {
+                // If auto-scroll is enabled, scroll to the bottom immediately
+                outputElement.scrollTop = outputElement.scrollHeight;
+            }
+        }
+    </script>
+
+    <style>
+        /* Add any custom styles here */
+
+        .autoscroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <h1>Starting bootstrap k8s cluster</h1>
+    <!-- Buttons to scroll to top and enable/disable auto-scrolling -->
+    <button onclick="toggleAutoScroll()">Toggle Auto-Scroll</button>
+
+    <pre id="output"></pre>
+    <button onclick="scrollToTop()">Scroll to Top</button>
+</body>
+</html>
