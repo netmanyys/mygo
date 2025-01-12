@@ -1,3 +1,7 @@
+// An Armstrong number (also known as a narcissistic number, pluperfect digital invariant (PPDI), or pluperfect number) is a number that is equal to the sum of its own digits raised to the power of the number of digits.
+// Formula: x = d1^n + d2^n + .. + dn^n, x is a n bit digit, d1,d2,...,dn are the digits of the number.
+// Example: 153 is an armstrong number, 153 = 1^3 + 5^3 + 3^3
+
 package main
 
 import (
