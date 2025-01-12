@@ -40,3 +40,38 @@ func main() {
 
     fmt.Printf("%d is armstrong number: %v\n", num, isArmstrong(num))
 }
+
+// Validation
+// $ go run main.go 
+// Please input a num:153
+// 153 is armstrong number: true
+// $ go run main.go 
+// Please input a num:154
+// 154 is armstrong number: false 
+// $ go run main.go 
+// Please input a num: 1553
+// 1553 is armstrong number: false
+// $ go run main.go 
+// Please input a num: 153
+// 153 is armstrong number: true
+// $ go run main.go 
+// Please input a num: 154
+// 154 is armstrong number: false
+// $ go run main.go 
+// Please input a num: 166
+// 166 is armstrong number: false
+// $ go run main.go 
+// Please input a num: 370
+// 370 is armstrong number: true
+// $ go run main.go 
+// Please input a num: 371
+// 371 is armstrong number: true
+// $ go run main.go 372
+// Please input a num: 372
+// 372 is armstrong number: false
+// $ go run main.go 372
+// Please input a num: 9474
+// 9474 is armstrong number: true
+// $ go run main.go 372
+// Please input a num: 9475
+// 9475 is armstrong number: false
